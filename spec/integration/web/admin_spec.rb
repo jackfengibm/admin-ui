@@ -656,7 +656,6 @@ describe AdminUI::Admin, :type => :integration, :firefox_available => true do
                            { :label => 'Service Plan Created',           :tag =>   nil, :value => @driver.execute_script("return Format.formatDateString(\"#{ cc_service_plans['resources'][0]['metadata']['created_at'] }\")") },
                            { :label => 'Service Plan Public',            :tag =>   nil, :value => cc_service_plans['resources'][0]['entity']['public'].to_s },
                            { :label => 'Service Instances',              :tag =>   nil, :value => cc_service_instances['resources'].length.to_s },
-                           { :label => 'Service Plan GUID',              :tag =>   nil, :value => cc_service_plans['resources'][0]['metadata']['guid'] },
                            { :label => 'Service Provider',               :tag =>   nil, :value => cc_services['resources'][0]['entity']['provider'] },
                            { :label => 'Service Label',                  :tag =>   nil, :value => cc_services['resources'][0]['entity']['label'] },
                            { :label => 'Service Version',                :tag =>   nil, :value => cc_services['resources'][0]['entity']['version'] },
@@ -677,15 +676,11 @@ describe AdminUI::Admin, :type => :integration, :firefox_available => true do
             expect(inputs[0].attribute('value')).to eq("#{ cc_service_plans['resources'][0]['metadata']['guid'] }")
           end
 
-          it 'has service instances link' do
-            check_filter_link('ServicePlans', 3, 'ServiceInstances', cc_service_instances['resources'].length.to_s)
+          it 'has service instances link to service instances filtered by service plan name' do
+            check_filter_link('ServicePlans', 3, 'ServiceInstances', cc_service_plans['resources'][0]['entity']['name'])
           end
 
-          context 'manage serice plans' do
-            before do
-              operation_stub(AdminUI::Config.load(config))
-            end
-
+          context 'manage service plans' do
             def check_first_row
               @driver.find_elements(:xpath => "//table[@id='ServicePlansTable']/tbody/tr/td[1]/input")[0].click
             end
@@ -711,13 +706,9 @@ describe AdminUI::Admin, :type => :integration, :firefox_available => true do
             end
 
             def check_operation_result(visibility)
-              confirm = @driver.switch_to.alert
-              expect(confirm.text).to eq("You are about to make selected service plans #{visibility}.  Do you want to continue?")
-              confirm.accept
-
               alert = nil
               Selenium::WebDriver::Wait.new(:timeout => 100).until { alert = @driver.switch_to.alert }
-              expect(alert.text).to eq('Update on service plans was completed successfully.')
+              expect(alert.text.sub(/\n/, '')).to eq('The operation finished without error.Please refresh the page later for the updated result.')
               alert.dismiss
             end
 

@@ -62,7 +62,7 @@ module AdminUI
       end
     end
 
-    def invalidate_service_caches
+    def invalidate_service_plans
       invalidate_cache(:service_plans)
     end
 

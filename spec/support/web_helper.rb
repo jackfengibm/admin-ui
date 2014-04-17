@@ -87,13 +87,6 @@ shared_context :web_context do
     expect(@driver.find_elements(:xpath => "//div[@id='#{ target_tab_id }PropertiesContainer']/table/tr[*]/td[2]")[0].text).to eq(expected_name)
   end
 
-  def check_main_table_link(tab_id, column_index, target_tab_id, target_colmn_idex, expected_name)
-    @driver.find_element(:xpath => "//table[@id='#{ tab_id }Table']/tbody/tr[1]/td[#{column_index}]").find_element(:link, '1').click
-    expect(@driver.find_element(:class_name => 'menuItemSelected').attribute('id')).to eq(target_tab_id)
-    expect(@driver.find_element(:id => "#{ target_tab_id }Table_filter").find_element(:tag_name => 'input').attribute('value')).to eq(expected_name)
-    expect(@driver.find_elements(:xpath => "//table[@id='#{ target_tab_id }Table']/tbody/tr[*]/td[#{target_colmn_idex}]")[0].text).to eq(expected_name)
-  end
-
   def check_stats_chart(id)
     chart = @driver.find_element(:id => "#{ id }Chart")
     expect(chart.displayed?).to be_true
