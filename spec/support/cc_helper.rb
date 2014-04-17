@@ -15,7 +15,6 @@ module CCHelper
   end
 
   def cc_stub(config)
-    AdminUI::Utils.stub(:http_request).and_return(nil)
     AdminUI::Utils.stub(:http_request).with(anything, "#{ config.cloud_controller_uri }/info", AdminUI::Utils::HTTP_GET) do
       OK.new(cc_info)
     end
