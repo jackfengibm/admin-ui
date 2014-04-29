@@ -153,6 +153,7 @@ module CCHelper
           'metadata' =>
           {
             'created_at' => '2013-10-16T08:55:46-05:00',
+            'updated_at' => '2013-10-17T08:55:46-05:00',
             'guid'       => 'organization1'
           },
           'entity'   =>
@@ -160,6 +161,7 @@ module CCHelper
             'billing_enabled'       => false,
             'name'                  => 'test_org',
             'quota_definition_guid' => 'quota1',
+            'updated_at' => '2013-10-17T08:55:46-05:00',
             'status'                => 'active'
           }
         }
@@ -176,6 +178,7 @@ module CCHelper
           'metadata' =>
           {
             'created_at' => '2013-10-16T08:55:46-05:00',
+            'updated_at' => '2013-10-17T08:55:46-05:00',
             'guid'       => 'organization1'
           },
           'entity'   =>
@@ -240,6 +243,7 @@ module CCHelper
           'metadata' =>
           {
             'created_at' => '2014-02-12T09:40:52-06:00',
+            'updated_at' => '2014-02-13T09:40:52-06:00',
             'guid'       => 'route1'
           },
           'entity'   =>
@@ -426,6 +430,7 @@ module CCHelper
           'metadata' =>
           {
             'created_at' => '2013-10-16T08:55:54-05:00',
+            'updated_at' => '2013-10-17T08:55:54-05:00',
             'guid'       => 'space1'
           },
           'entity'   =>
@@ -492,6 +497,7 @@ module CCHelper
             'metadata' =>
               {
                 'created_at' => '2013-10-18T08:28:35-05:00',
+                'updated_at' => '2013-10-19T08:28:35-05:00',
                 'guid'       => 'application1'
               },
             'entity'   =>
@@ -520,6 +526,7 @@ module CCHelper
             'metadata' =>
               {
                 'created_at' => '2013-10-18T08:28:35-05:00',
+                'updated_at' => '2013-10-19T08:28:35-05:00',
                 'guid'       => 'application1'
               },
             'entity'   =>
@@ -648,8 +655,9 @@ module CCHelper
           'userName' => 'admin',
           'meta'     =>
           {
-            'created'      => '2013-10-16T08:55:27.339Z',
-            'lastModified' => '2013-10-23T07:07:50.425Z',
+            'created'      => '2014-10-16T08:55:27.339Z',
+            'updated'      => '2014-10-17T08:55:27.339Z',
+            'lastModified' => '2014-10-23T07:07:50.425Z',
             'version'      => 5
           },
           'name'     =>
