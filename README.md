@@ -260,6 +260,7 @@ Example: <code>data/stats.json</code>
 </dt>
 <dd>
 Deprecated.  See stats_refresh_schedules for details.
+<br>
 Daily minute from midnight for automatic stats collection
 <br>
 Example: <code>300</code>.  This results in stats collection at 5 AM.
@@ -268,8 +269,9 @@ Example: <code>300</code>.  This results in stats collection at 5 AM.
 <code>stats_refresh_schedules</code>
 </dt>
 <dd>
-schedules of automatic stats collection in the form of array of strings similar to the Crontab schedule syntax, which consists of five fields for specifying day , date and time as follows.
+Schedules of automatic stats collection in the form of array of strings similar to the Crontab schedule syntax, which consists of five fields for specifying day , date and time as follows.
 <br>
+<code>
 *     *     *   *    *
 -     -     -   -    -
 |     |     |   |    |
@@ -279,20 +281,25 @@ schedules of automatic stats collection in the form of array of strings similar 
 |     +----------- hour (0 - 23)
 +------------- minute (0 - 59)
 
-where * denotes legal values surrounded by parenthesis for the column.  
+where * denotes legal values surrounded by parenthesis for the column.
+</code>
 <br>
 These fields are separated by spaces.  The field values can be * which means every occurance of the fields.
 <br>
-For example, ['0 * * * *'] means the collection starts once an hour at the beginning of the hour.
+For example, 
 <br>
-Field value also be a sequence of legal values separated by comma.
+['0 * * * *'] means the collection starts once an hour at the beginning of the hour.
 <br>
-For example, ['0 1,13 * * *'] means the collection starts 1:00AM and 1:00PM every day.
+Field value also be a sequence of legal values separated by comma.  Step sequence doesn't need to be monitonic.
+<br>
+['0 1,11,12,13 * * *'] means the collection starts 1:00AM, 11:00AM, 12:00PM and 1:00PM every day.
 <br>
 Field value can be in form of range, which consists of two legal values connected by a hyphen (-).
 <br>
-For example, ['0 0 * * 1-5'] means the collection starts midnight 12:00AM, Monday to Friday.
+['0 0 * * 1-5'] means the collection starts midnight 12:00AM, Monday to Friday.
 <br>
+Mixed use of sequence and ranges are permitted. <br>
+The example above can expressed as this as well: ['0 1,11-13 * * *']<br><br>
 Step based repeat pattern like /4 is currently not supported.
 <br>
 [Please see crontab syntax for details](http://www.adminschoice.com/crontab-quick-reference/) 
@@ -305,15 +312,16 @@ For example, [ '0 1 * * *', '0 12-13 * * 1-5' ] means the collection starts at 1
 
 This property supports the following predefined schedules
 <br>
+<code>
 | predefined schedule        | Description                                  |
-| ---------------------------|:-------------:| --------------------------  :|
+| ---------------------------|:-------------:| ----------------------------:|
 | ['@hourly']                | runs at the beginning of every hour          |
 | ['@daily']                 | runs at the 12:00AM everyday                 |
 | ['@weekly']                | runs at the 12:00AM every Sunday             |
 | ['@monthly']               | runs at the 12:00AM on first day of the month|
 | ['@yeary']                 | runs at the 12:00AM on every Jan 1st         |
 | ['@annually']              | runs at the 12:00AM on every Jan 1st         |
-
+</code>
 </dd>
 <dt>
 <code>stats_retries</code>
