@@ -271,18 +271,18 @@ Example: <code>300</code>.  This results in stats collection at 5 AM.
 <dd>
 Schedules of automatic stats collection expressed in the form of an array of strings which follow syntax similar the crontab schedule.  Each string consists of five fields, for specifying time, date, days of a week and ect, as follows.
 <br>
-<br>
+<br>&nbsp;
 &nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;*  <br>
-&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;-  <br>
-&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;<br>
-&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;+----- day of week (0 - 6)(Sunday=0) <br>
-&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;+------- month (1 - 12) <br>
-&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;+--------- day of month (1 - 31) <br>
-&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;+----------- hour (0 - 23) <br>
+&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;-  <br>
+&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;<br>
+&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;+----- day of week (0 - 6)(Sunday=0) <br>
+&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;+------- month (1 - 12) <br>
+&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;+--------- day of month (1 - 31) <br>
+&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------- hour (0 - 23) <br>
 &nbsp;&nbsp;+------------- minute (0 - 59) <br>
 
 where * denotes an expression using legal values shown inside the parenthesis for the column. <br>
-
+&nbsp;
 <br>
 <br>
 * Fields are separated by spaces.  
