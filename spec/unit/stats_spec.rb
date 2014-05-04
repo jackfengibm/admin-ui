@@ -432,7 +432,7 @@ describe AdminUI::Stats do
   end
 
   context 'calculate_time_until_generate_stats' do
-    it 'runs once a year at midnight 12:00AM of every January 1st using predefined schedule - range' do
+    it 'runs once at 1:00 AM every day and at 12:00PM, 1:00PM, 2:00PM, 3:00PM, 4:00PM, 5:00PM, 8:00PM Monday to Friday - range' do
       time_last_run = Time.now
       target_time = time_last_run
       stats_schedules = [ '0 1 * * *', '0 12-17 * * 1-5' ]
@@ -472,7 +472,7 @@ describe AdminUI::Stats do
   end
 
   context 'calculate_time_until_generate_stats' do
-    it 'runs once a year at midnight 12:00AM of every January 1st using predefined schedule - sequence without steps' do
+    it 'runs once at 1:00 AM every day and at 12:00PM, 1:00PM, 2:00PM, 3:00PM, 4:00PM, 5:00PM, 8:00PM Monday to Friday - sequence without steps' do
       time_last_run = Time.now
       target_time = time_last_run
       stats_schedules = [ '0 1 * * *', '0 0 12,13,14,15,16,17,20 * * 1-5' ]
@@ -512,7 +512,7 @@ describe AdminUI::Stats do
   end
 
   context 'calculate_time_until_generate_stats' do
-    it 'runs once a year at midnight 12:00AM of every January 1st using predefined schedule - mix use of range and sequence without step' do
+    it 'runs once at 1:00 AM every day and at 12:00PM, 1:00PM, 2:00PM, 3:00PM, 4:00PM, 5:00PM, 8:00PM Monday to Friday - mix use of range and sequence without step' do
       time_last_run = Time.now
       target_time = time_last_run
       stats_schedules = [ '0 1 * * *', '0 0 12,13,15-17,20 * * 1-5' ]
