@@ -282,33 +282,30 @@ Schedules of automatic stats collection expressed in the form of an array of str
 &nbsp;&nbsp;+------------- minute (0 - 59) <br>
 
 where * denotes an expression using legal values shown inside the parenthesis for the column. <br>
-&nbsp;
-<br>
 <br>
 * Fields are separated by spaces.  
-<br>
 <br>
 * Fields can be expressed by a wildcard * symbal which means every occurance of the fields.
 <br><br>
 For example, 
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;['0 * * * *'] means the collection starts once every hour at the beginning of the hour.
+&nbsp;['0 * * * *'] means the collection starts once every hour at the beginning of the hour.
 <br><br>
 * Field value can be expressed in form of a range, which consists of two legal values connected by a hyphen (-).
 <br><br>
 For example,
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;['0 0 * * 1-5'] means the collection starts midnight 12:00AM, Monday to Friday.
+&nbsp;['0 0 * * 1-5'] means the collection starts midnight 12:00AM, Monday to Friday.
 <br><br>
 * Field value can also be a sequence of legal values separated by comma.  Sequence doesn't need to be monitonic.
 <br><br>
 For example, 
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;['0 1,11,12,13 * * *'] means the collection process starts at 1:00AM, 11:00AM, 12:00PM and 1:00PM every day.
+&nbsp;['0 1,11,12,13 * * *'] means the collection process starts at 1:00AM, 11:00AM, 12:00PM and 1:00PM every day.
 <br>
 <br>
 * Mixed uses of sequence and ranges are permitted. <br>
-&nbsp;&nbsp;&nbsp;&nbsp;The example above can expressed this way as well: ['0 1,11-13 * * *']
+&nbsp;The example above can expressed this way as well: ['0 1,11-13 * * *']
 <br>
 <br>
 * Step based repeat pattern like /4 is currently not supported.
@@ -322,7 +319,7 @@ For example,
 <br>
 For example, 
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[ '0 1 * * *', '0 12-13 * * 1-5' ] means the collection starts at 1:00AM everyday; on Monday to Friday, the collection process will also start at 12:00PM and 1:00PM.
+&nbsp;[ '0 1 * * *', '0 12-13 * * 1-5' ] means the collection starts at 1:00AM everyday; on Monday to Friday, the collection process will also start at 12:00PM and 1:00PM.
 <br>
 <br>
 This property supports the following predefined schedules
