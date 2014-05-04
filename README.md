@@ -269,59 +269,109 @@ Example: <code>300</code>.  This results in stats collection at 5 AM.
 <code>stats_refresh_schedules</code>
 </dt>
 <dd>
-Schedules of automatic stats collection in the form of array of strings similar to the Crontab schedule syntax, which consists of five fields for specifying day , date and time as follows.
+Schedules of automatic stats collection expressed in the form of an array of strings which follow syntax similar the crontab schedule.  Each string consists of five fields, for specifying time, date, days of a week and ect, as follows.
 <br>
-<code>
-*     *     *   *    *
--     -     -   -    -
-|     |     |   |    |
-|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
-|     |     |   +------- month (1 - 12)
-|     |     +--------- day of month (1 - 31)
-|     +----------- hour (0 - 23)
+<br>
+* &nbsp;&nbsp;&nbsp;
+* &nbsp;&nbsp;&nbsp;
+* &nbsp;&nbsp;&nbsp;
+* &nbsp;&nbsp;&nbsp;
+*  <br>
+- &nbsp;&nbsp;&nbsp;
+- &nbsp;&nbsp;&nbsp;
+- &nbsp;&nbsp;&nbsp;
+- &nbsp;&nbsp;&nbsp;
+-  <br>
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;<br>
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
++----- day of week (0 - 6) (Sunday=0)
+<br>
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
++------- month (1 - 12)
+<br>
+| &nbsp;&nbsp;&nbsp;
+| &nbsp;&nbsp;&nbsp;
++--------- day of month (1 - 31)
+<br>
+| &nbsp;&nbsp;&nbsp;
++----------- hour (0 - 23)
+<br>
 +------------- minute (0 - 59)
-
-where * denotes legal values surrounded by parenthesis for the column.
-</code>
 <br>
-These fields are separated by spaces.  The field values can be * which means every occurance of the fields.
+where * denotes an expression using legal values shown inside the parenthesis for the column. <br>
+
+<br>
+<br>
+* Fields are separated by spaces.  
+<br>
+<br>
+* Fields can be expressed by a wildcard * symbal which means every occurance of the fields.
+<br><br>
+For example, 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;['0 * * * *'] means the collection starts once every hour at the beginning of the hour.
+<br><br>
+* Field value can be expressed in form of a range, which consists of two legal values connected by a hyphen (-).
+<br><br>
+For example,
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;['0 0 * * 1-5'] means the collection starts midnight 12:00AM, Monday to Friday.
+<br><br>
+* Field value can also be a sequence of legal values separated by comma.  Sequence doesn't need to be monitonic.
+<br><br>
+For example, 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;['0 1,11,12,13 * * *'] means the collection process starts at 1:00AM, 11:00AM, 12:00PM and 1:00PM every day.
+<br>
+<br>
+* Mixed uses of sequence and ranges are permitted. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;The example above can expressed this way as well: ['0 1,11-13 * * *']
+<br>
+<br>
+* Step based repeat pattern like /4 is currently not supported.
+<br>
+<br>
+<b>Reference: </b>[Please see crontab syntax (http://www.adminschoice.com/crontab-quick-reference/) for details](http://www.adminschoice.com/crontab-quick-reference/) 
+<br>
+<br>
+* stats_refresh_schedules supports multiple schedules.
+<br>
 <br>
 For example, 
 <br>
-['0 * * * *'] means the collection starts once an hour at the beginning of the hour.
+&nbsp;&nbsp;&nbsp;&nbsp;[ '0 1 * * *', '0 12-13 * * 1-5' ] means the collection starts at 1:00AM everyday; on Monday to Friday, the collection process will also start at 12:00PM and 1:00PM.
 <br>
-Field value also be a sequence of legal values separated by comma.  Step sequence doesn't need to be monitonic.
 <br>
-['0 1,11,12,13 * * *'] means the collection starts 1:00AM, 11:00AM, 12:00PM and 1:00PM every day.
-<br>
-Field value can be in form of range, which consists of two legal values connected by a hyphen (-).
-<br>
-['0 0 * * 1-5'] means the collection starts midnight 12:00AM, Monday to Friday.
-<br>
-Mixed use of sequence and ranges are permitted. <br>
-The example above can expressed as this as well: ['0 1,11-13 * * *']<br><br>
-Step based repeat pattern like /4 is currently not supported.
-<br>
-[Please see crontab syntax for details](http://www.adminschoice.com/crontab-quick-reference/) 
-<br>
-
-stats_refresh_schedules supports multiple schedules.
-<br>
-For example, [ '0 1 * * *', '0 12-13 * * 1-5' ] means the collection starts at 1:00AM everyday and on Monday to Friday, the collection also got started at 12:00PM and 1:00PM on Monday to Friday.
-<br>
-
 This property supports the following predefined schedules
 <br>
-<code>
-| predefined schedule        | Description                                  |
-| ---------------------------|:-------------:| ----------------------------:|
-| ['@hourly']                | runs at the beginning of every hour          |
-| ['@daily']                 | runs at the 12:00AM everyday                 |
-| ['@weekly']                | runs at the 12:00AM every Sunday             |
-| ['@monthly']               | runs at the 12:00AM on first day of the month|
-| ['@yeary']                 | runs at the 12:00AM on every Jan 1st         |
-| ['@annually']              | runs at the 12:00AM on every Jan 1st         |
-</code>
+<br>
+Predefined Schedule &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description                                  <br>
+----------------------------------------------------------------------------
+<br>
+&nbsp;&nbsp; ['@hourly'] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; runs at the beginning of every hour
+<br>
+&nbsp;&nbsp; ['@daily'] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  runs at the 12:00AM everyday
+<br>
+&nbsp;&nbsp; ['@weekly'] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  runs at the 12:00AM every Sunday
+<br>
+&nbsp;&nbsp; ['@monthly'] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  runs at the 12:00AM on first day of the month
+<br>
+&nbsp;&nbsp; ['@yeary'] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  runs at the 12:00AM on every Jan 1st
+<br>
+&nbsp;&nbsp; ['@annually'] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  runs at the 12:00AM on every Jan 1st.  It is the same as @yearly.
+<br>
+<br>
+* When stats_refresh_schedules supports and stats_refresh_time are both present in the default.yml file, stats_refresh_time setting is ignored and ony stats_refresh_schedules supports setting is taken.
+<br>
 </dd>
 <dt>
 <code>stats_retries</code>
