@@ -326,20 +326,20 @@ For example,
 This property supports the following predefined schedules
 <br>
 <br>
-Predefined Schedule &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description                                  <br>
+Predefined Schedule &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description  <br>
 ----------------------------------------------------------------------------
 <br>
-&nbsp;&nbsp; ['@hourly'] .................... runs at the beginning of every hour
+&nbsp;&nbsp; ['@hourly'] .............................. runs at the beginning of every hour
 <br>
-&nbsp;&nbsp; ['@daily']...................... runs at the 12:00AM everyday
+&nbsp;&nbsp; ['@daily'] ................................. runs at the 12:00AM everyday
 <br>
-&nbsp;&nbsp; ['@weekly'] .................... runs at the 12:00AM every Sunday
+&nbsp;&nbsp; ['@weekly'] .............................. runs at the 12:00AM every Sunday
 <br>
-&nbsp;&nbsp; ['@monthly'] ................... runs at the 12:00AM on first day of the month
+&nbsp;&nbsp; ['@monthly'] ........................... runs at the 12:00AM on first day of the month
 <br>
-&nbsp;&nbsp; ['@yeary'] ..................... runs at the 12:00AM on every Jan 1st
+&nbsp;&nbsp; ['@yeary'] ............................... runs at the 12:00AM on every Jan 1st
 <br>
-&nbsp;&nbsp; ['@annually'] .................. runs at the 12:00AM on every Jan 1st.  It is the same as @yearly.
+&nbsp;&nbsp; ['@annually'] ......................... runs at the 12:00AM on every Jan 1st.  It is the same as @yearly.
 <br>
 <br>
 * When stats_refresh_schedules supports and stats_refresh_time are both present in the default.yml file, stats_refresh_time setting is ignored and ony stats_refresh_schedules supports setting is taken.
