@@ -9,6 +9,7 @@ require_relative 'admin/db/dbstore_migration'
 require_relative 'admin/email'
 require_relative 'admin/login'
 require_relative 'admin/log_files'
+require_relative 'admin/logger'
 require_relative 'admin/nats'
 require_relative 'admin/operation'
 require_relative 'admin/secure_web'
@@ -26,6 +27,7 @@ module AdminUI
     end
 
     def start
+      Thread.current[:session_username] = '--'
       setup_traps
       setup_config
       setup_logger
@@ -48,8 +50,7 @@ module AdminUI
     end
 
     def setup_logger
-      @logger = Logger.new(@config.log_file)
-      @logger.level = Logger::DEBUG
+      @logger = AdminUILogger.new(@config.log_file, Logger::DEBUG)
     end
 
     def setup_dbstore
